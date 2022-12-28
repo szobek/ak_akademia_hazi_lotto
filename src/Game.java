@@ -6,23 +6,30 @@ public class Game implements lotto {
 
     public Game() {
         this.winnerNums = new int[5];
-        number=generateRandomNumber();
-        lottery();
+
     }
 
-    public void lottery(){
-        for( int i = 0;i<5;i++){
+    public void lottery() {
+        for (int i = 0; i < 5; i++) {
 
-            while (isInArray(winnerNums, number)){
-                number=generateRandomNumber();
+            while (isInArray(winnerNums, number)) {
+                number = generateRandomNumber();
 
             }
-            winnerNums[i]=number;
+            winnerNums[i] = number;
         }
-    for(int num:winnerNums)
-        System.out.println(num);
+
     }
 
+    public void play() {
+        StringBuilder res = new StringBuilder();
+        number = generateRandomNumber();
+        lottery();
+        System.out.print("A számok: ");
+        for (int num : winnerNums)
+            res.append(num + " ");
+        System.out.println(res);
+    }
 
     public int generateRandomNumber() {
         Random random = new Random();
